@@ -36,12 +36,27 @@
 								<ul class="rd-navbar-items-list">
 									<li>
 										<ul class="list-inline-xxs">
-											<li>
-												<a href="{{ path('app_login') }}" class="text-danger" style="font-size:20px;">Se Connecter</a>
-											</li>
-											<li>
-												<a href="/users/register" target="_self" class="text-danger" style="font-size:20px;">Créer un compte</a>
-											</li>
+											{% if app.user %}
+												<li>
+													<span>{{ app.user.fullName }}</span>
+													<form action="{{ path('app_logout') }}" method="post">
+														<button type="submit" class="text-danger" style="font-size:20px;">
+															{{ 'Logout' }}
+														</button>
+													</form>
+												</li>
+											{% else %}
+												<li>
+													<a href="{{ path('app_login') }}" class="text-danger" style="font-size:20px;">
+														{{ 'Login' }}
+													</a>
+												</li>
+												<li>
+													<a href="{{ path('app_register') }}" target="_self" class="text-danger" style="font-size:20px;">
+														{{ 'Register' }}
+													</a>
+												</li>
+											{% endif %}
 										</ul>
 									</li>
 								</ul>

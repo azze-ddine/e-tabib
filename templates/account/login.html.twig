@@ -53,32 +53,23 @@
 				</div>
 				<div class="col-lg-7 px-5 pt-5">
 					<h4>Connectez-vous avec votre compte</h4>
-					<form>
-						<div class="form-row">
-							<div class="col-lg-7">
-								<input type="email" placeholder="E-mail" class="form-control my-3 p-4">
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="col-lg-7">
-								<input type="password" placeholder="********" class="form-control my-3 p-4">
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="col-lg-7">
-								<button type="button" class="btn1 mt-3 mb-5">Se Connecter</button>
-							</div>
-						</div>
-						<a href="#">Mot de Passe Oublié?</a>
-						<!-- add the link -->
-						<p>Vous n'avez pas de compte ?<a href="#">Enregistrer Ici</a>
-						</p>
-						<!-- add the link -->
-						<div class="col-xs-5 header-logo tele">
-							<br>
-							<a href="index.html"><img src="img/logo tele.png" alt="" class="img-responsive logo tele"></a>
-						</div>
+					{% if error %}
+						<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					{% endif %}
+
+					<form action="{{ path('app_login') }}" method="post">
+						<label for="username">Email:</label>
+						<input type="text" id="username" name="_username" value="{{ last_username }}">
+
+						<label for="password">Password:</label>
+						<input type="password" id="password" name="_password">
+						{# If you want to control the URL the user is redirected to on success
+        				<input type="hidden" name="_target_path" value="/account"> #}
+
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+						<button type="submit">login</button>
 					</form>
+
 				</div>
 			</div>
 		</div>
