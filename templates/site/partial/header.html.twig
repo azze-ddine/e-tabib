@@ -52,8 +52,13 @@
 													</a>
 												</li>
 												<li>
-													<a href="{{ path('app_register') }}" target="_self" class="text-danger" style="font-size:20px;">
-														{{ 'Register' }}
+													<a href="{{ path('app_patient_register') }}" class="text-danger" style="font-size:20px;">
+														{{ 'NewPatient' }}
+													</a>
+												</li>
+												<li>
+													<a href="{{ path('app_doctor_register') }}" target="_self" class="text-danger" style="font-size:20px;">
+														{{ 'NewDoctor' }}
 													</a>
 												</li>
 											{% endif %}

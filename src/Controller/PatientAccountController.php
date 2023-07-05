@@ -6,20 +6,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AccountController extends AbstractController
+class PatientAccountController extends AbstractController
 {
-    #[Route('/profile', name: 'app_profile')]
+    #[Route('/patient', name: 'app_patient_profile')]
     public function profile(): Response
     {
-        return $this->render('account/profile/index.html.twig', [
+        return $this->render('account/patient/index.html.twig', [
             'controller_name' => 'AccountController',
         ]);
     }
 
-    #[Route('/profile/edit', name: 'app_profile_edit')]
+    #[Route('/patient/edit', name: 'app_patient_profile_edit')]
     public function editProfile(): Response
     {
-        return $this->render('account/profile/edit.html.twig', [
+        return $this->render('account/patient/edit.html.twig', [
             'controller_name' => 'AccountController',
         ]);
     }

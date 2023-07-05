@@ -1,0 +1,24 @@
+{#{% extends 'base.html.twig' %}#}
+
+{% block title %}Patientregister
+{% endblock %}
+
+{% block body %}
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+
+	<h1>Patientregister</h1>
+
+	{{ form_start(patientRegisterForm) }}
+
+	{{ form_row(patientRegisterForm.firstName) }}
+	{{ form_row(patientRegisterForm.lastName) }}
+	{{ form_row(patientRegisterForm.ville) }}
+	{{ form_row(patientRegisterForm.sexe) }}
+	{{ form_row(patientRegisterForm.email) }}
+	{{ form_rest(patientRegisterForm) }}
+
+	<button type="submit" class="btn">Patientregister</button>
+	{{ form_end(patientRegisterForm) }}
+{% endblock %}

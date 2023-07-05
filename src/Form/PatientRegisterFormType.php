@@ -6,12 +6,13 @@ use App\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class RegistrationFormType extends AbstractType
+class PatientRegisterFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -40,33 +41,8 @@ class RegistrationFormType extends AbstractType
                 ],
                 'placeholder' => 'Select a gender', // optional
             ])
-            ->add('phone')
-            ->add('codeINPE')
-            ->add('specialite', ChoiceType::class, [
-                'label' => 'Spécialité',
-                'choices' => [
-                    'Addictologie' => 'Addictologie',
-                    'Allergologie' => 'Allergologie',
-                    'Anatomie et cytologie pathologiques' => 'Anatomie et cytologie pathologiques',
-                    'Anatomopathologie' => 'Anatomopathologie',
-                    'Anesthésie-réanimation' => 'Anesthésie-réanimation',
-                    'Anesthésiologie' => 'Anesthésiologie',
-                    'Biochimie médicale' => 'Biochimie médicale',
-                    'Biologie médicale' => 'Biologie médicale',
-                    'Cardiologie' => 'Cardiologie',
-                    'Chirurgie cardiaque' => 'Chirurgie cardiaque',
-                    'Chirurgie colorectale' => 'Chirurgie colorectale',
-                    'Chirurgie du rachis' => 'Chirurgie du rachis',
-                    'Chirurgie générale' => 'Chirurgie générale',
-                    'Chirurgie générale oncologique' => 'Chirurgie générale oncologique',
-                    'Chirurgie générale pédiatrique' => 'Chirurgie générale pédiatrique',
-                    'Chirurgie maxillo-faciale' => 'Chirurgie maxillo-faciale',
-                    'Chirurgie orl' => 'Chirurgie orl',
-                    'Chirurgie orthopédique' => 'Chirurgie orthopédique',
-                    'Chirurgie orthopédique et traumatologie' => 'Chirurgie orthopédique et traumatologie',
-                ],
-                'placeholder' => 'Select a specialty', // optional
-            ])
+            //Todo add input age or birth
+            ->add('birthday')
             ->add('email')
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
